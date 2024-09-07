@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2fd17332ec265a49a6b4f6cbdb93566, type: 3}
+  m_Name: DialogueTree
+  m_EditorClassIdentifier: 
+  startNode: {fileID: 11400000, guid: c4106d5a46563004fa23e3ded5b37f50, type: 2}

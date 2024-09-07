@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class MakeChoiceCommand : ICommand
 {
     private DialogueManager _manager;
@@ -13,13 +12,28 @@ public class MakeChoiceCommand : ICommand
 
     public void Execute()
     {
-        if(_choiceIndex >= 0 && _choiceIndex < _manager.CurrentNode.choices.Length)
+        // Null kontrolleri ekleyin
+        if (_manager.CurrentNode == null)
         {
-            _manager.CurrentNode.choices[_choiceIndex].choiceStrategy.ExecuteChoice(_manager, _choiceIndex);
+            Debug.LogError("CurrentNode is null");
+            return;
         }
-        else
+
+        if (_choiceIndex < 0 || _choiceIndex >= _manager.CurrentNode.choices.Length)
         {
-            Debug.Log("Invalid choice index: " + _choiceIndex);
+            Debug.LogError("Invalid choice index");
+            return;
         }
+
+        // Seçilen düğüme geçiş yapma
+        DialogueNode nextNode = _manager.CurrentNode.choices[_choiceIndex].nextNode;
+
+        if (nextNode == null)
+        {
+            Debug.LogError("NextNode is null");
+            return;
+        }
+
+        _manager.SetCurrentNode(nextNode);
     }
 }

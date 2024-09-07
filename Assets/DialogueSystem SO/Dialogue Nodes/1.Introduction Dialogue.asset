@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1935b02090b6f464c9db3060a9d526a0, type: 3}
+  m_Name: 1.Introduction Dialogue
+  m_EditorClassIdentifier: 
+  dialogueText: "Merhaba, seni uzun zamand\u0131r bekliyorduk. Bu d\xFCnyada seni
+    \xF6nemli bir g\xF6rev bekliyor. Haz\u0131r m\u0131s\u0131n?"
+  choices:
+  - choiceText: "Evet, haz\u0131r\u0131m!"
+    nextNode: {fileID: 11400000, guid: 10e7a1fd49b39ed488a6be4b0900901c, type: 2}
+  - choiceText: Daha fazla bilgi alabilir miyim?
+    nextNode: {fileID: 11400000, guid: 10e7a1fd49b39ed488a6be4b0900901c, type: 2}

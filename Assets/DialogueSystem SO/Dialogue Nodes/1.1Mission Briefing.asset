@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1935b02090b6f464c9db3060a9d526a0, type: 3}
+  m_Name: 1.1Mission Briefing
+  m_EditorClassIdentifier: 
+  dialogueText: "G\xF6revin, kaybolmu\u015F bir hazinenin izini s\xFCrmek. Bu hazine
+    eski bir uygarl\u0131\u011Fa ait ve b\xFCy\xFCk bir g\xFC\xE7 i\xE7eriyor. Yerel
+    efsaneler var"
+  choices:
+  - choiceText: "Hazine hakk\u0131nda daha fazla bilgi ver."
+    nextNode: {fileID: 11400000, guid: c4ab864b57db53b41bb36c4ee138ed4f, type: 2}
+  - choiceText: "Nas\u0131l ba\u015Flayaca\u011F\u0131m?"
+    nextNode: {fileID: 11400000, guid: 8acf81b9efead2f45871ec57cbe52881, type: 2}
