@@ -2,20 +2,26 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
+/// <summary>
+/// Manages the dialogue system, including displaying dialogue and handling player choices.
+/// </summary>
 public class DialogueManager : MonoBehaviour
 {
-    public DialogueTree dialogueTree;
-    public DialogueNode CurrentNode { get; private set; }
+    public DialogueTree dialogueTree; // The root dialogue tree
+    public DialogueNode CurrentNode { get; private set; } // Current node in the dialogue tree
 
-    public TextMeshProUGUI dialogueText;
-    public Button[] choiceButtons; // Array of buttons for choices
+    public TextMeshProUGUI dialogueText; // Text component for displaying dialogue
+    public Button[] choiceButtons; // Array of buttons for player choices
     public float choiceTextFontSize = 20f; // Default font size for choices
 
-    void Start()
+    private void Start()
     {
         StartDialogue();
     }
 
+    /// <summary>
+    /// Starts the dialogue by setting the initial node and displaying it.
+    /// </summary>
     public void StartDialogue()
     {
         if (dialogueTree == null)
@@ -28,6 +34,10 @@ public class DialogueManager : MonoBehaviour
         DisplayCurrentDialogue();
     }
 
+    /// <summary>
+    /// Sets the current dialogue node and updates the display.
+    /// </summary>
+    /// <param name="node">The new dialogue node to set.</param>
     public void SetCurrentNode(DialogueNode node)
     {
         if (node == null)
@@ -40,6 +50,9 @@ public class DialogueManager : MonoBehaviour
         DisplayCurrentDialogue();
     }
 
+    /// <summary>
+    /// Displays the current dialogue and updates choice buttons based on the current node.
+    /// </summary>
     public void DisplayCurrentDialogue()
     {
         if (CurrentNode == null)
@@ -63,18 +76,31 @@ public class DialogueManager : MonoBehaviour
             {
                 choiceButtons[i].gameObject.SetActive(true); // Show button
                 var buttonText = choiceButtons[i].GetComponentInChildren<TextMeshProUGUI>();
-                buttonText.text = CurrentNode.choices[i].choiceText;
-                
-                // Set the font size
-                buttonText.fontSize = choiceTextFontSize;
+                if (buttonText != null)
+                {
+                    buttonText.text = CurrentNode.choices[i].choiceText;
+                    buttonText.fontSize = choiceTextFontSize;
+                }
+                else
+                {
+                    Debug.LogError("TextMeshProUGUI component not found on button " + i);
+                }
 
                 int index = i; // Local copy for lambda expression
                 choiceButtons[i].onClick.RemoveAllListeners();
                 choiceButtons[i].onClick.AddListener(() => MakeChoice(index));
             }
+            else
+            {
+                Debug.LogError("Not enough buttons assigned for the choices.");
+            }
         }
     }
 
+    /// <summary>
+    /// Executes a choice based on the index provided.
+    /// </summary>
+    /// <param name="choiceIndex">The index of the choice to execute.</param>
     public void MakeChoice(int choiceIndex)
     {
         ICommand command = new MakeChoiceCommand(this, choiceIndex);

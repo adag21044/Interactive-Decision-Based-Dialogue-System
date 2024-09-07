@@ -1,4 +1,8 @@
 using UnityEngine;
+
+/// <summary>
+/// Command to execute a choice in the dialogue system.
+/// </summary>
 public class MakeChoiceCommand : ICommand
 {
     private DialogueManager _manager;
@@ -12,7 +16,6 @@ public class MakeChoiceCommand : ICommand
 
     public void Execute()
     {
-        // Null kontrolleri ekleyin
         if (_manager.CurrentNode == null)
         {
             Debug.LogError("CurrentNode is null");
@@ -25,7 +28,6 @@ public class MakeChoiceCommand : ICommand
             return;
         }
 
-        // Seçilen düğüme geçiş yapma
         DialogueNode nextNode = _manager.CurrentNode.choices[_choiceIndex].nextNode;
 
         if (nextNode == null)
