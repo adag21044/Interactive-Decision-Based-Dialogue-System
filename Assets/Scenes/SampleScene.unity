@@ -1150,6 +1150,7 @@ MonoBehaviour:
   - {fileID: 784941094}
   - {fileID: 466372524}
   - {fileID: 307786550}
+  choiceTextFontSize: 10
 --- !u!4 &1844462666
 Transform:
   m_ObjectHideFlags: 0

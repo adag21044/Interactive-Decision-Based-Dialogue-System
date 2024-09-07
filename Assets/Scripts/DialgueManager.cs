@@ -9,6 +9,7 @@ public class DialogueManager : MonoBehaviour
 
     public TextMeshProUGUI dialogueText;
     public Button[] choiceButtons; // Array of buttons for choices
+    public float choiceTextFontSize = 20f; // Default font size for choices
 
     void Start()
     {
@@ -61,7 +62,12 @@ public class DialogueManager : MonoBehaviour
             if (i < choiceButtons.Length)
             {
                 choiceButtons[i].gameObject.SetActive(true); // Show button
-                choiceButtons[i].GetComponentInChildren<TextMeshProUGUI>().text = CurrentNode.choices[i].choiceText;
+                var buttonText = choiceButtons[i].GetComponentInChildren<TextMeshProUGUI>();
+                buttonText.text = CurrentNode.choices[i].choiceText;
+                
+                // Set the font size
+                buttonText.fontSize = choiceTextFontSize;
+
                 int index = i; // Local copy for lambda expression
                 choiceButtons[i].onClick.RemoveAllListeners();
                 choiceButtons[i].onClick.AddListener(() => MakeChoice(index));
